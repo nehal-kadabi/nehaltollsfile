@@ -2,7 +2,7 @@ pipeline{
     stages{
         stage('git-checkout'){
             steps{
-                git branch: 'main', url: ''
+                git branch: 'main', url: 'https://github.com/nehal-kadabi/nehaltollsfile.git'
             }
         }
 
