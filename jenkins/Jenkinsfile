@@ -5,7 +5,32 @@ pipeline{
         stage('git-checkout'){
             steps{
                 git branch: 'development', url: 'https://github.com/nehal-kadabi/nehaltollsfile.git'
+                pipeline{
+    agent any
+    tools{
+        maven 'maven'
+        jdk 'java'
+    }
+
+    stages{
+        stage('git-checkout'){
+            steps{
+                git branch: 'main', url: 'https://github.com/veerbasanna/Test-2025.git'
             }
         }
+
+        stage('compile'){
+            steps{
+                sh 'mvn compile'
+            }
+        }
+
+        stage('Build'){
+            steps{
+                sh 'mvn clean package'
+            }
+        }
+
     }
 }
+
