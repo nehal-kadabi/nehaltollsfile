@@ -1,22 +1,29 @@
-pipeline{
-    stages{
-        stage('git-checkout'){
-            steps{
-                git branch: 'main', url: 'https://github.com/nehal-kadabi/nehaltollsfile.git'
+pipeline {
+    agent any  // This means it can run on any available agent
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/nehal-kadabi/nehaltollsfile.git'
             }
         }
 
-        stage('compile'){
-            steps{
-                sh 'mvn compile'
+        stage('Build') {
+            steps {
+                echo 'Building the project...'
             }
         }
 
-        stage('Build'){
-            steps{
-                sh 'mvn clean package'
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
             }
         }
 
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the project...'
+            }
+        }
     }
 }
