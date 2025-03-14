@@ -1,17 +1,4 @@
 pipeline{
-    agent any
-
-    stages{
-        stage('git-checkout'){
-            steps{
-                git branch: 'development', url: 'https://github.com/nehal-kadabi/nehaltollsfile.git'
-                pipeline{
-    agent any
-    tools{
-        maven 'maven'
-        jdk 'java'
-    }
-
     stages{
         stage('git-checkout'){
             steps{
@@ -32,7 +19,4 @@ pipeline{
         }
 
     }
-}
-}
-}
 }
